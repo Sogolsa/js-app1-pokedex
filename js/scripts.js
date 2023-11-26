@@ -7,13 +7,19 @@ let pokemonList = [
 /* for loop to list the names of all pokemons in the array with their height,
  and if height > 1.5, it get's the label of 'Wow, that's big!' */
 
-for (let i = 0; i < pokemonList.length; i++){
-    if (pokemonList[i].height > 1.5) {
-        nameHeight = pokemonList[i].name + ' ' +
-         '(height:' + pokemonList[i].height + ')';
-        document.write(nameHeight + ' ' + "- Wow, that's big!" + '<br>');
-    } else {
-        document.write(pokemonList[i].name + ' ' + 
-        '(height:' + pokemonList[i].height + ')' + '<br>');
-    }
+for (let i = 0; i < pokemonList.length; i++) {
+  if (pokemonList[i].height > 1.5) {
+    nameHeight =
+      pokemonList[i].name + ' ' + '(height:' + pokemonList[i].height + ')';
+    document.write(nameHeight + ' ' + "- Wow, that's big!" + '<br>');
+  } else {
+    document.write(
+      pokemonList[i].name +
+        ' ' +
+        '(height:' +
+        pokemonList[i].height +
+        ')' +
+        '<br>'
+    );
+  }
 }
