@@ -4,6 +4,68 @@ let pokemonRepository = (function () {
   let pokemonList = [];
   // Pushing pokemon list from the API //
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  let modalContainer = document.querySelector('#modal-container');
+
+   // show details when click on the button //
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then(function (details) {
+      console.log(pokemon);
+      showModal(pokemon.name,
+        'Height: ' + details.height,
+        details.imageUrl);
+    });
+  };
+
+  function showModal(title, text, img) {
+    modalContainer.innerHTML = '';
+    let modal = document.createElement('div');
+    modal.classList.add('modal');
+
+    let closeButtonElement = document.createElement('button');
+    closeButtonElement.classList.add('modal-close')
+    closeButtonElement.innerText = 'x';
+    closeButtonElement.addEventListener('click', hideModal);
+
+    let titleElement = document.createElement('h1');
+    titleElement.innerText = title;
+
+    let contentElement = document.createElement('p');
+    contentElement.innerText = text;
+
+    let imageElement = document.createElement('img');
+    imageElement.src = img;
+
+    modal.appendChild(closeButtonElement);
+    modal.appendChild(titleElement);
+    modal.appendChild(contentElement);
+    modal.appendChild(imageElement);
+    modalContainer.appendChild(modal);
+
+    modalContainer.classList.add('is-visible');
+
+  }
+  
+  // Added hideModal function to close the modal with the x button //
+  function hideModal() {
+    modalContainer.classList.remove('is-visible');
+  }
+
+
+  // close the modal with escape key //
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+      hideModal();
+    }
+  });
+
+
+  // close the modal by clicking on overlay //
+  modalContainer.addEventListener('click', (e) => {
+    let target = e.target;
+    if (target === modalContainer) {
+      hideModal();
+    }
+  });
 
   // Add a new object ot the array and make sure it's object //
   function add(pokemon) {
@@ -71,18 +133,13 @@ let pokemonRepository = (function () {
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.types = details.types;
+        return item;
       })
       .catch(function (e) {
         console.error(e);
       });
   }
 
-  // show details when click on the button //
-  function showDetails(pokemon) {
-    loadDetails(pokemon).then(function () {
-      console.log(pokemon);
-    });
-  }
   return {
     add: add,
     getAll: getAll,
@@ -91,6 +148,8 @@ let pokemonRepository = (function () {
     addButtonListener: addButtonListener,
     loadList: loadList,
     loadDetails: loadDetails,
+    showModal: showModal,
+    hideModal: hideModal,
   };
 })();
 
