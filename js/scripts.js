@@ -43,19 +43,14 @@ let pokemonRepository = (function () {
       });
   }
 
-   // show details when click on the button //
+  // show details when click on the button //
   function showDetails(pokemon) {
-    loadDetails(pokemon).then(function (details) {
-      console.log(pokemon);
-       showModal(
-        pokemon.name,
-        details.height,
-        details.imageUrl
-        );
+    loadDetails(pokemon).then(function () {
+      showModal(pokemon);
     });
-  };
+  }
 
-  function showModal(name, height, img) {
+  function showModal(pokemon) {
     let modalBody = $('.modal-body');
     let modalTitle = $('.modal-title');
     let modalHeader = $('.modal-header');
@@ -65,23 +60,26 @@ let pokemonRepository = (function () {
     modalBody.empty();
 
     // create a name for pokemon//
-    let titleElement = $('<h1>' + name + '<h1>');
+    let titleElement = $('<h1>' + pokemon.name + '<h1>');
     let imageElementFront = $('<img class="modal-image" style="width:50%">');
-    imageElementFront.attr('src', img);
-    let heightElement = $('<p>' + 'height: ' + height + '</P>');
+    imageElementFront.attr('src', pokemon.imageUrl);
+    let heightElement = $('<p>' + 'Height: ' + pokemon.height + '</P>');
+    let types = pokemon.types.map((typeName) => typeName.type.name).join(', ');
+    let typesElement = $('<p>' + 'Types: ' + types + '</p>');
+
 
     modalTitle.append(titleElement);
-    modalBody.append(imageElementFront);
     modalBody.append(heightElement);
+    modalBody.append(imageElementFront);
+    modalBody.append(typesElement);
 
     $('#exampleModal').modal('show');
   }
 
-   
   // Added hideModal function to close the modal with the x button //
   function hideModal() {
     $('#exampleModal').modal('hide');
-    }
+  }
 
   // Add a new object ot the array and make sure it's object //
   function add(pokemon) {
@@ -100,15 +98,14 @@ let pokemonRepository = (function () {
   // button listener so when click on the button, it shows the details of pokemon //
   function addButtonListener(button, pokemon) {
     $(button).on('click', function () {
-        showDetails(pokemon);
+      showDetails(pokemon);
     });
   }
-
 
   function addListItem(pokemon) {
     //Calling the list group class from ul//
     let pokemonListElement = $('.list-group');
-    // creating an div child element for the list with class=row //
+    // creating an div child element for the list with class = row //
     let rowElement = $('<div class="row justify-content-center"></div>');
     let pokemonItem = $('<li class="list-group-item"></li>');
     let button = $('<button class="btn btn-primary"></button>');
@@ -120,7 +117,7 @@ let pokemonRepository = (function () {
     pokemonListElement.append(rowElement);
     rowElement.append(pokemonItem);
   }
-  
+
   return {
     add: add,
     getAll: getAll,
