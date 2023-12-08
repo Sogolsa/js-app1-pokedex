@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    background-color: rgb(242, 252, 252);
   }
   
   .li {
@@ -19,6 +20,14 @@ body {
     cursor: pointer;
     margin: 4px 2px;
   }
+
+  p {
+    font-size: 24px;
+  }
+
+  .modal-content {
+    background-color: rgb(242, 252, 252);
+}
   
   
   
