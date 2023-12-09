@@ -5,3 +5,4 @@ and for part 3 I created a for loop with an if condistion to list all the names 
 Task 11: fixed all the issues and added minified js and css files and linked them to the index.html.
 Task7-11: Working on a simple pokedex app fetching data from an external API: https://pokeapi.co/
 In this app by clicking on each button with a pokemon name, you can see each pokemon's details like name, height, types and the image.
+Link to the Pokedex app: https://sogolsa.github.io/js-app1-pokedex/
