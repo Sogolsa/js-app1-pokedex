@@ -64,9 +64,10 @@ let pokemonRepository = (function () {
     let imageElementFront = $('<img class="modal-image" style="width:50%">');
     imageElementFront.attr('src', pokemon.imageUrl);
     let heightElement = $('<p>' + 'Height: ' + pokemon.height + '</P>');
+
+    // map through the pokemon objects, get their names and join them with a comma. //
     let types = pokemon.types.map((typeName) => typeName.type.name).join(', ');
     let typesElement = $('<p>' + 'Types: ' + types + '</p>');
-
 
     modalTitle.append(titleElement);
     modalBody.append(heightElement);
