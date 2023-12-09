@@ -64,10 +64,9 @@ let pokemonRepository = (function () {
     let imageElementFront = $('<img class="modal-image" style="width:50%">');
     imageElementFront.attr('src', pokemon.imageUrl);
     let heightElement = $('<p>' + 'Height: ' + pokemon.height + '</P>');
-
-    // map through the pokemon objects, get their names and join them with a comma. //
     let types = pokemon.types.map((typeName) => typeName.type.name).join(', ');
     let typesElement = $('<p>' + 'Types: ' + types + '</p>');
+
 
     modalTitle.append(titleElement);
     modalBody.append(heightElement);
@@ -107,11 +106,10 @@ let pokemonRepository = (function () {
     //Calling the list group class from ul//
     let pokemonListElement = $('.list-group');
     // creating an div child element for the list with class = row //
-    let rowElement = $('<div></div>').addClass('row justify-content-center');
-    let pokemonItem = $('<li></li>').addClass('list-group-item');
-    let button = $('<button></button>')
-      .addClass('btn btn-primary')
-      .text(pokemon.name);
+    let rowElement = $('<div class="row justify-content-center"></div>');
+    let pokemonItem = $('<li class="list-group-item"></li>');
+    let button = $('<button class="btn btn-primary"></button>');
+    button.text(pokemon.name);
 
     addButtonListener(button, pokemon);
 
