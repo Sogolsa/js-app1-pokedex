@@ -137,4 +137,6 @@ pokemonRepository.loadList().then(function () {
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
+}).catch(function (error) {
+    console.error('Error occurred while loading the Pokemon list:', error);
 });
