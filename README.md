@@ -1,8 +1,31 @@
-# js-app1-pokedex
-Task #2: Created a variable with 3 objects. Each object has 3 keys: name, height, and array of types.
-Task #3: for part one, I created a for loop to write the names of the Pokemons and their height next to their names. 
-and for part 3 I created a for loop with an if condistion to list all the names and the heights and label the one with the tallest height as "wow, that's big!"
-Task 11: fixed all the issues and added minified js and css files and linked them to the index.html.
-Task7-11: Working on a simple pokedex app fetching data from an external API: https://pokeapi.co/
-In this app by clicking on each button with a pokemon name, you can see each pokemon's details like name, height, types and the image.
-Link to the Pokedex app: https://sogolsa.github.io/js-app1-pokedex/
+# Pokédex App: js-app1-pokedex
+
+Pokedex App is a JavaScript web app built with HTML, CSS, and JavaScript, that loads data from an external
+API and enables the viewing of data points in details.
+
+# Key Features
+
+● Load data from an external source (API)
+● View a list of items
+● On user action (e.g., by clicking on a list item), view details for that item
+
+# Technologies Used
+
+○ HTML
+○ CSS
+○ JavaScript
+○ JQuery
+○ Bootstrap Components
+○ Promise-Polyfill
+
+# API Used
+
+https://pokeapi.co/api/v2/pokemon/?limit=150
+
+# Getting Started
+
+Clone the repository: git clone https://github.com/Sogolsa/js-app1-pokedex.git
+
+# Link To The Pokedex App:
+
+https://sogolsa.github.io/js-app1-pokedex/
